@@ -1,0 +1,21 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+@theme {
+  --noto-sans: "Noto Sans", serif;
+  --color-primary: #5596ef;
+  --color-primary-text: #444444;
+  --color-deep-blue: #2374e3;
+}
+
+.banner-cycle {
+  animation: subtleMove 1s infinite alternate ease-in-out;
+}
+@keyframes subtleMove {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(15px);
+  }
+}
