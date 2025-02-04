@@ -14,10 +14,10 @@ import { logOut, setUser } from "../features/auth/authSlice";
 const baseQuery = fetchBaseQuery({
   baseUrl: "http://localhost:5000/api",
   credentials: "include",
-  prepareHeaders: (headers, { getState }) => {
+  prepareHeaders: (headers, { getState, endpoint }) => {
     const token = (getState() as RootState).auth.token;
 
-    if (token) {
+    if (token && endpoint.startsWith("/")) {
       headers.set("authorization", token);
     }
 

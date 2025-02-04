@@ -22,7 +22,7 @@ const Signup = () => {
       const res = await signup(userData);
       console.log(res);
 
-      toast.success("Signed up", { id: toastId, duration: 2000 });
+      toast.success("Signed up successful", { id: toastId, duration: 2000 });
       navigate(`/login`);
     } catch (error) {
       toast.error("Something went wrong!", { id: toastId, duration: 2000 });
@@ -31,7 +31,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen px-3 flex-col gap-6">
+    <div className="flex justify-center items-center min-h-screen px-3 flex-col gap-6 py-10">
       <img className="max-w-[100px] -mb-1" src={logo} alt="logo" />
 
       <div className="w-full max-w-[400px] px-7 py-9 rounded-2xl bg-muted-body">
@@ -40,6 +40,7 @@ const Signup = () => {
         </div>
         <PForm onSubmit={onSubmit}>
           <PInput type="text" name="name" label="Name" />
+          <PInput type="text" name="address" label="Address" />
           <PInput type="email" name="email" label="Email" />
           <PInput type="text" name="password" label="Password" />
 

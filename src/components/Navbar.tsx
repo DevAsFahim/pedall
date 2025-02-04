@@ -15,20 +15,20 @@ const Navbar = () => {
   return (
     <div className="bg-[#E7F6F5] py-4 ">
       <nav className="flex justify-between items-center max-w-[1170px] mx-auto">
-        <div className="">
+        <Link to="/" className="">
           <img src={logo} alt="logo" className="w-[120px]" />
-        </div>
+        </Link>
 
         <div className="flex items-center justify-between gap-5 font-noto-sans text-primary-text font-semibold">
-          <a className="hover:text-primary" href="/">
+          <Link to="/" className="hover:text-primary">
             Home
-          </a>
+          </Link>
           <a className="hover:text-primary" href="/">
             About
           </a>
-          <a className="hover:text-primary" href="/">
+          <Link to="/products" className="hover:text-primary">
             Products
-          </a>
+          </Link>
         </div>
 
         <div className="flex justify-center items-center">
