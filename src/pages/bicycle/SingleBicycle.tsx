@@ -2,13 +2,13 @@ import { useParams } from "react-router-dom";
 import { useGetSingleBicycleQuery } from "../../redux/features/bicycle/bicycleApi";
 import Banner from "../../components/bicycles/Banner";
 import { useState } from "react";
-import { FaMinus, FaPlus } from "react-icons/fa6";
+import { FaCartPlus, FaMinus, FaPlus } from "react-icons/fa6";
 
 const SingleBicycle = () => {
-  const [orderQuantity, setOrderQuantity] = useState(1);
   const { bicycleId } = useParams();
   const { data: bicycleData } = useGetSingleBicycleQuery(bicycleId);
-  //   console.log(data);
+  const [orderQuantity, setOrderQuantity] = useState(1);
+  console.log(bicycleData);
   const { name, brand, price, image, quantity, type, model } = bicycleData.data;
 
   return (
@@ -56,7 +56,7 @@ const SingleBicycle = () => {
             </div>
 
             <div className="flex items-center gap-5 mt-7">
-              <div className="rounded-full border border-[#e7e4e4] px-4 py-2 text-sm lg:text-xl flex items-center gap-3">
+              <div className="rounded-full border border-[#e7e4e4] px-4 py-2.5 text-sm lg:text-xl flex items-center gap-4">
                 <button
                   onClick={() => setOrderQuantity(orderQuantity - 1)}
                   className="text-base cursor-pointer"
@@ -71,6 +71,11 @@ const SingleBicycle = () => {
                   <FaPlus />
                 </button>
               </div>
+
+              <button className="flex items-center whitespace-nowrap justify-center gap-4 bg-primary-text text-[20px] font-semibold px-8 py-2 rounded-full text-white hover:gap-5 hover:bg-deep-blue transition-all cursor-pointer ">
+                Add to cart
+                <FaCartPlus />
+              </button>
             </div>
           </div>
         </div>
