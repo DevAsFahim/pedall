@@ -1,7 +1,6 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import PForm from "../../components/form/PForm";
 import PInput from "../../components/form/PInput";
-import { useSignupMutation } from "../../redux/features/auth/authApi";
 import { toast } from "sonner";
 import { Controller, FieldValues, SubmitHandler } from "react-hook-form";
 import { Input, Form } from "antd";

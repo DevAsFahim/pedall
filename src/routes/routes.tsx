@@ -5,6 +5,7 @@ import Signup from "../pages/Signup";
 import CreateBicycle from "../pages/bicycle/createBicycle";
 import Home from "../pages/Home";
 import Bicycles from "../pages/bicycle/Bicycles";
+import SingleBicycle from "../pages/bicycle/SingleBicycle";
 
 const routes = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const routes = createBrowserRouter([
       {
         path: "/products",
         element: <Bicycles />,
+      },
+      {
+        path: "/products/:bicycleId",
+        element: <SingleBicycle />,
       },
     ],
   },

@@ -1,3 +1,4 @@
+import { TQueryParam } from "../../../types/global.type";
 import { baseApi } from "../../api/baseApi";
 
 const bicycleApi = baseApi.injectEndpoints({
@@ -26,10 +27,29 @@ const bicycleApi = baseApi.injectEndpoints({
       },
     }),
     getAllBicycles: builder.query({
-      query: () => ({
-        url: "/products",
-        method: "GET",
-      }),
+      query: (args) => {
+        const params = new URLSearchParams();
+
+        if (args) {
+          args.forEach((item: TQueryParam) => {
+            params.append(item.name, item.value as string);
+          });
+        }
+
+        return {
+          url: "/products",
+          method: "GET",
+          params: params,
+        };
+      },
+    }),
+    getSingleBicycle: builder.query({
+      query: (id) => {
+        return {
+          url: `/products/${id}`,
+          method: "GET",
+        };
+      },
     }),
   }),
 });
@@ -38,4 +58,5 @@ export const {
   useUploadImageMutation,
   useAddBicycleMutation,
   useGetAllBicyclesQuery,
+  useGetSingleBicycleQuery,
 } = bicycleApi;

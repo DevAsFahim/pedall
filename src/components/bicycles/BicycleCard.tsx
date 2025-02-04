@@ -1,7 +1,9 @@
 import { FaCartPlus } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 interface ProductCardProps {
   bicycleData: {
+    _id: string;
     image: string;
     name: string;
     price: number;
@@ -13,7 +15,8 @@ interface ProductCardProps {
   };
 }
 export function BicycleCard({ bicycleData }: ProductCardProps) {
-  const { image, name, price, brand } = bicycleData;
+  const { image, name, price, brand, _id } = bicycleData;
+
   return (
     <div className="overflow-hidden group ">
       <div className="aspect-square lg:aspect-auto lg:h-[300px] relative bg-[#E6E6E6] p-2 flex items-center justify-center overflow-hidden">
@@ -34,7 +37,12 @@ export function BicycleCard({ bicycleData }: ProductCardProps) {
           Brand: <span className="font-semibold">{brand}</span>
         </p>
         <div className="flex items-center justify-between">
-          <h3 className="text-lg font-semibold mt-1">{name}</h3>
+          <Link
+            to={`/products/${_id}`}
+            className="text-lg font-semibold mt-1 hover:text-primary"
+          >
+            {name}
+          </Link>
           <p className="text-xl font-bold mt-1">${price}</p>
         </div>
       </div>
