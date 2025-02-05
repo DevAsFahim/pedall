@@ -40,7 +40,7 @@ export default function BikeHero() {
                 our bikes are made to make your daily commute a joy.
               </span>
             </h2>
-            <p className="text-lg    leading-relaxed font-medium">
+            <p className="text-lg text-[#838080] leading-relaxed font-medium">
               This isn&apos;t a bicycle. This is a soul stirring,
               bring-a-smile-to-your-face, aerodynamic work of art. Designed to
               move you through the world without the weight of it. Where your

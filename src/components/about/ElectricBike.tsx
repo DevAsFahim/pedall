@@ -8,7 +8,7 @@ const ElectricBike = () => {
         <div className="relative pt-14 lg:pt-36 pb-0 lg:pb-[340px]">
           <div className="lg:max-w-1/2">
             <h1 className="text-[35px] xl:text-5xl font-medium mb-4">
-              Eura reimagined what electric scooter could be.{" "}
+              Pedall reimagined what electric scooter could be.{" "}
               <span className="text-gray-500">
                 Now, we are doing the same for electric bikes.
               </span>

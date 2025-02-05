@@ -8,8 +8,8 @@ const About = () => {
     <>
       <Banner />
       <Features />
-      <BikeHero />
       <ElectricBike />
+      <BikeHero />
     </>
   );
 };
