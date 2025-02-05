@@ -25,10 +25,10 @@ const featureData = [
 
 export default function Features() {
   return (
-    <section className="pb-16 pt-24 px-4 max-w-[1170px] mx-auto">
+    <section className="pb-16 pt-24 p-container">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {featureData.map((data) => (
-          <div className="text-left">
+          <div key={data.title} className="text-left">
             <div className="w-12 h-12 mb-5">
               <img src={data.image} alt="features-image-1" />
             </div>

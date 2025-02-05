@@ -25,7 +25,7 @@ export function AllBicycles() {
   const metaData = bicycleData?.meta;
 
   return (
-    <div className="max-w-[1170px] mx-auto px-4 py-8 mt-24">
+    <div className="p-container py-8 mt-24">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {bicycleData?.data &&
           bicycleData?.data.map((bicycle: TBicycleData) => (

@@ -24,7 +24,7 @@ const SingleBicycle = () => {
     <>
       <Banner productName={name} brand={brand} />
 
-      <div className="mt-24 max-w-[1170px] mx-auto">
+      <div className="mt-24 p-container">
         <div className="flex gap-8">
           <div className="w-full py-[50px] lg:py-[100px] bg-[#E6E6E6] flex items-center justify-center basis-[60%]">
             <img

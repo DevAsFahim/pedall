@@ -10,7 +10,7 @@ const Banner = ({
 }) => {
   return (
     <div className=" bg-[#E7F6F5] pt-[40px]">
-      <div className="flex max-w-[1170px] mx-auto">
+      <div className="flex p-container">
         <div className="flex-1 flex gap-8 lg:gap-32 items-center">
           <div>
             <p className="text-[46px] color-black font-medium leading-[50px] mb-5">

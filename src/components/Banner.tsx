@@ -4,7 +4,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 const Banner = () => {
   return (
     <div className=" bg-[#E7F6F5] py-[40px]">
-      <div className="flex min-h-screen max-w-[1170px] mx-auto">
+      <div className="flex min-h-screen p-container">
         <div className="flex-1 flex flex-col justify-center items-start">
           <div className="text-[25px] text-primary-text mb-5 rounded-full border border-primary-text px-6 py-1 font-semibold tracking-wider">
             From $344

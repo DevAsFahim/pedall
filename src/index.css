@@ -9,6 +9,10 @@
   --color-muted-body: #e7f6f5;
 }
 
+.p-container {
+  @apply max-w-[1170px] mx-auto px-4 sm:px-10 xl:px-0;
+}
+
 .banner-cycle {
   animation: subtleMove 1s infinite alternate ease-in-out;
 }
@@ -19,4 +23,20 @@
   100% {
     transform: translateX(15px);
   }
+}
+
+.banner-left-wrapper {
+  @apply flex-1 flex-col md:flex-row flex gap-8 lg:gap-32 items-start md:items-center relative pb-7;
+}
+.banner-title {
+  @apply text-[30px] lg:text-[46px] text-black font-medium leading-[50px] mb-2 lg:mb-5 whitespace-nowrap;
+}
+.banner-subtitle {
+  @apply text-primary-text text-sm lg:text-base;
+}
+.banner-shade {
+  @apply absolute top-full  max-w-[150px] lg:max-w-[200px] md:static;
+}
+.banner-img {
+  @apply w-[300px] md:w-auto mx-auto;
 }
