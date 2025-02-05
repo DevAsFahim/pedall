@@ -24,6 +24,17 @@
     transform: translateX(15px);
   }
 }
+.vertical-move {
+  animation: move 1s infinite alternate ease-in-out;
+}
+@keyframes move {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(5px);
+  }
+}
 
 .banner-left-wrapper {
   @apply flex-1 flex-col md:flex-row flex gap-8 lg:gap-32 items-start md:items-center relative pb-7;
