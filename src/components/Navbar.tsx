@@ -1,4 +1,3 @@
-// import { Link } from "react-router-dom";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { logOut, selectCurrentUser } from "../redux/features/auth/authSlice";
@@ -23,9 +22,9 @@ const Navbar = () => {
           <Link to="/" className="hover:text-primary">
             Home
           </Link>
-          <a className="hover:text-primary" href="/">
+          <Link to="/about" className="hover:text-primary" href="/">
             About
-          </a>
+          </Link>
           <Link to="/products" className="hover:text-primary">
             Products
           </Link>

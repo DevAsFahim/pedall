@@ -3,12 +3,21 @@ import { useGetSingleBicycleQuery } from "../../redux/features/bicycle/bicycleAp
 import Banner from "../../components/bicycles/Banner";
 import { useState } from "react";
 import { FaCartPlus, FaMinus, FaPlus } from "react-icons/fa6";
+import LoadingSpinner from "../LoadingSpinner";
 
 const SingleBicycle = () => {
   const { bicycleId } = useParams();
-  const { data: bicycleData } = useGetSingleBicycleQuery(bicycleId);
+  const {
+    data: bicycleData,
+    isLoading,
+  } = useGetSingleBicycleQuery(bicycleId);
   const [orderQuantity, setOrderQuantity] = useState(1);
-  console.log(bicycleData);
+
+  // Handle error or missing data
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
   const { name, brand, price, image, quantity, type, model } = bicycleData.data;
 
   return (
