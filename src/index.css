@@ -40,3 +40,11 @@
 .banner-img {
   @apply w-[300px] md:w-auto mx-auto;
 }
+
+/* buttons */
+.primary-btn {
+  @apply bg-primary whitespace-nowrap text-sm md:text-[20px] font-semibold px-5 md:px-8 py-2 rounded-full text-white flex items-center gap-3 md:gap-4 hover:gap-5 hover:bg-deep-blue transition-all cursor-pointer;
+}
+.add-to-cart-button {
+  @apply flex items-center whitespace-nowrap justify-center gap-3 md:gap-4 bg-primary-text text-sm md:text-[20px] font-semibold px-5 md:px-8 py-2 rounded-full text-white hover:gap-5 hover:bg-deep-blue transition-all cursor-pointer;
+}

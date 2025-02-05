@@ -25,8 +25,8 @@ export function AllBicycles() {
   const metaData = bicycleData?.meta;
 
   return (
-    <div className="p-container py-8 mt-24">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="p-container py-8 mt-10 lg:mt-24">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {bicycleData?.data &&
           bicycleData?.data.map((bicycle: TBicycleData) => (
             <BicycleCard key={bicycle._id} bicycleData={bicycle} />

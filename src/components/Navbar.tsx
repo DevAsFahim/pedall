@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { logOut, selectCurrentUser } from "../redux/features/auth/authSlice";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
-import { FiMenu, FiX } from "react-icons/fi"; // Import icons for open/close
+import { FiMenu, FiX } from "react-icons/fi";
 
 import logo from "../assets/logo.png";
 
@@ -26,9 +26,15 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-5 font-noto-sans text-primary-text font-semibold">
-          <Link to="/" className="hover:text-primary">Home</Link>
-          <Link to="/about" className="hover:text-primary">About</Link>
-          <Link to="/products" className="hover:text-primary">Products</Link>
+          <Link to="/" className="hover:text-primary">
+            Home
+          </Link>
+          <Link to="/about" className="hover:text-primary">
+            About
+          </Link>
+          <Link to="/products" className="hover:text-primary">
+            Products
+          </Link>
         </div>
 
         {/* Desktop Buttons */}
@@ -58,24 +64,47 @@ const Navbar = () => {
           )}
         </div>
 
-        {/* Mobile Menu Button */}
         <button
           className="md:hidden text-primary text-3xl"
           onClick={() => setMenuOpen(!menuOpen)}
         >
-          {menuOpen ? <FiX /> : <FiMenu />}
+          <FiMenu />
         </button>
       </nav>
 
       {/* Mobile Navigation */}
       <div
-        className={`fixed top-0 right-0 h-full w-64 bg-[#E7F6F5] shadow-lg transform transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 right-0 z-50 h-full w-full bg-muted-body transform transition-transform duration-300 ease-in-out ${
           menuOpen ? "translate-x-0" : "translate-x-full"
-        } md:hidden flex flex-col items-center pt-20`}
+        } md:hidden flex flex-col items-start px-20 pt-20`}
       >
-        <Link to="/" className="py-3 text-xl text-primary-text hover:text-primary" onClick={() => setMenuOpen(false)}>Home</Link>
-        <Link to="/about" className="py-3 text-xl text-primary-text hover:text-primary" onClick={() => setMenuOpen(false)}>About</Link>
-        <Link to="/products" className="py-3 text-xl text-primary-text hover:text-primary" onClick={() => setMenuOpen(false)}>Products</Link>
+        <button
+          className="text-primary text-3xl absolute top-5 right-5"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+         <FiX />
+        </button>
+        <Link
+          to="/"
+          className="py-3 text-xl text-primary-text hover:text-primary"
+          onClick={() => setMenuOpen(false)}
+        >
+          Home
+        </Link>
+        <Link
+          to="/about"
+          className="py-3 text-xl text-primary-text hover:text-primary"
+          onClick={() => setMenuOpen(false)}
+        >
+          About
+        </Link>
+        <Link
+          to="/products"
+          className="py-3 text-xl text-primary-text hover:text-primary"
+          onClick={() => setMenuOpen(false)}
+        >
+          Products
+        </Link>
 
         {!user ? (
           <>
