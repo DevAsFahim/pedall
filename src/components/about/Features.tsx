@@ -25,7 +25,7 @@ const featureData = [
 
 export default function Features() {
   return (
-    <section className="pb-10 md:pb-16 pt-10 md:pt-24 p-container">
+    <section className="py-10 md:py-24 p-container">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-5">
         {featureData.map((data) => (
           <div key={data.title} className="text-center md:text-left max-w-[320px] mx-auto md:mx-0">

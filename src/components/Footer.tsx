@@ -28,6 +28,12 @@ export default function Footer() {
                         <Link
                           to={item.link}
                           className="text-[#838080] hover:text-gray-900 transition-colors group inline-block"
+                          onClick={() => {
+                            window.scrollTo({
+                              top: 0,
+                              behavior: "smooth"
+                            });
+                          }}
                         >
                           {item.name}
                           <div className="w-0 group-hover:w-full h-[1px] bg-black transition-all duration-500"></div>

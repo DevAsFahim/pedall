@@ -7,6 +7,7 @@ import Home from "../pages/Home";
 import Bicycles from "../pages/bicycle/Bicycles";
 import SingleBicycle from "../pages/bicycle/SingleBicycle";
 import About from "../pages/About";
+import Dashboard from "../pages/dashboard/Dashboard";
 
 const routes = createBrowserRouter([
   {
@@ -33,8 +34,11 @@ const routes = createBrowserRouter([
         path: "/about",
         element: <About />,
       },
-
     ],
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
   },
   {
     path: "/login",
