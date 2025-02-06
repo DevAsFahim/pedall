@@ -10,22 +10,6 @@ const bicycleApi = baseApi.injectEndpoints({
         body: data,
       }),
     }),
-    uploadImage: builder.mutation({
-      query: (image) => {
-        const formData = new FormData();
-        formData.append("image", image);
-
-        return {
-          url: `https://api.imgbb.com/1/upload?key=ba98601a2c14cae8f49fde94da530d6e`,
-          method: "POST",
-          body: formData,
-          credentials: "omit",
-          headers: {
-            authorization: undefined,
-          },
-        };
-      },
-    }),
     getAllBicycles: builder.query({
       query: (args) => {
         const params = new URLSearchParams();
@@ -55,7 +39,6 @@ const bicycleApi = baseApi.injectEndpoints({
 });
 
 export const {
-  useUploadImageMutation,
   useAddBicycleMutation,
   useGetAllBicyclesQuery,
   useGetSingleBicycleQuery,

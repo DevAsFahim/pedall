@@ -14,7 +14,7 @@ export const DashboardLayout = () => {
   };
 
   return (
-    <Layout style={{ height: "100%", backgroundColor: "red" }}>
+    <Layout style={{ height: "100%" }}>
       <Sidebar />
       <Layout>
         <Header>

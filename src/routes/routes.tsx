@@ -7,7 +7,9 @@ import Home from "../pages/Home";
 import Bicycles from "../pages/bicycle/Bicycles";
 import SingleBicycle from "../pages/bicycle/SingleBicycle";
 import About from "../pages/About";
-import Dashboard from "../pages/dashboard/Dashboard";
+import Dashboard from "../pages/dashboard/Main";
+import AdminDashboard from "../pages/dashboard/admin/Dashboard";
+import Orders from "../pages/dashboard/admin/Orders";
 
 const routes = createBrowserRouter([
   {
@@ -37,8 +39,18 @@ const routes = createBrowserRouter([
     ],
   },
   {
-    path: "/dashboard",
+    path: "/admin",
     element: <Dashboard />,
+    children: [
+      {
+        path: "orders",
+        element: <Orders />,
+      },
+      {
+        path: "dashboard",
+        element: <AdminDashboard />,
+      },
+    ],
   },
   {
     path: "/login",

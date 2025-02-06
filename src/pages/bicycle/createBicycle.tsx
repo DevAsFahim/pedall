@@ -5,10 +5,8 @@ import { toast } from "sonner";
 import { Controller, FieldValues, SubmitHandler } from "react-hook-form";
 import { Input, Form } from "antd";
 import PSelect from "../../components/form/PSelect";
-import {
-  useAddBicycleMutation,
-  useUploadImageMutation,
-} from "../../redux/features/bicycle/bicycleApi";
+import { useAddBicycleMutation } from "../../redux/features/bicycle/bicycleApi";
+import { useUploadImageMutation } from "../../redux/api/imgbbApi";
 
 const CreateBicycle = () => {
   const [uploadImage] = useUploadImageMutation();
