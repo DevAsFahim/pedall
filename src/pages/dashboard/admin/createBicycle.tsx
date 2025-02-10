@@ -1,12 +1,11 @@
-import { Link } from "react-router-dom";
-import PForm from "../../components/form/PForm";
-import PInput from "../../components/form/PInput";
 import { toast } from "sonner";
 import { Controller, FieldValues, SubmitHandler } from "react-hook-form";
 import { Input, Form } from "antd";
-import PSelect from "../../components/form/PSelect";
-import { useAddBicycleMutation } from "../../redux/features/bicycle/bicycleApi";
-import { useUploadImageMutation } from "../../redux/api/imgbbApi";
+import { useUploadImageMutation } from "../../../redux/api/imgbbApi";
+import { useAddBicycleMutation } from "../../../redux/features/bicycle/bicycleApi";
+import PForm from "../../../components/form/PForm";
+import PInput from "../../../components/form/PInput";
+import PSelect from "../../../components/form/PSelect";
 
 const CreateBicycle = () => {
   const [uploadImage] = useUploadImageMutation();
@@ -52,7 +51,7 @@ const CreateBicycle = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen px-3 flex-col gap-6 py-10">
+    <div className="flex justify-center items-center min-h-screen px-3 flex-col gap-6">
       <div className="w-full max-w-[400px] px-7 py-9 rounded-2x">
         <PForm onSubmit={onSubmit}>
           <PInput type="text" name="name" label="Product Name" />
@@ -99,11 +98,6 @@ const CreateBicycle = () => {
               </Form.Item>
             )}
           />
-
-          <div className="flex items-center justify-center mb-5 gap-4">
-            <p>Already have an account? </p>
-            <Link to="/login">Login</Link>
-          </div>
 
           <button
             type="submit"

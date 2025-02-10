@@ -20,7 +20,7 @@ export default function Footer() {
 
             {(Object.keys(footerLinks) as (keyof typeof footerLinks)[]).map(
               (key) => (
-                <div>
+                <div key={key}>
                   <h3 className="text-xl font-semibold mb-4 capitalize">{key}</h3>
                   <ul className="space-y-3">
                     {footerLinks[key].map((item) => (

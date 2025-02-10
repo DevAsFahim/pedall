@@ -1,5 +1,8 @@
-import { Space, Table, TableProps, Tag } from "antd";
+import { Table, TableProps } from "antd";
 import { useGetAllOrdersQuery } from "../../../redux/features/order/orderApi";
+import { TOrder } from "../../../types/order.type";
+import { Pagination } from "antd";
+import { useState } from "react";
 
 interface DataType {
   key: string;
@@ -11,11 +14,15 @@ interface DataType {
 }
 
 const Orders = () => {
-  const { data: orderData } = useGetAllOrdersQuery(undefined);
-  console.log(orderData);
+  const [page, setPage] = useState(1);
+  const { data: orderData } = useGetAllOrdersQuery([
+    { name: "page", value: page },
+    { name: "sort", value: "id" },
+  ]);
+  const metaData = orderData?.meta;
 
   const tableData: DataType[] = orderData?.data?.map(
-    ({ _id, user, product, quantity, totalPrice }) => ({
+    ({ _id, user, product, quantity, totalPrice }: TOrder) => ({
       key: _id,
       name: product.name,
       email: user.email,
@@ -77,23 +84,6 @@ const Orders = () => {
     // },
   ];
 
-  const data: DataType[] = [
-    {
-      key: "1",
-      name: "Cosmic cycle",
-      email: "devasfahim@gmail.com",
-      quantity: 3,
-      totalPrice: 300,
-    },
-    {
-      key: "2",
-      name: "Electric",
-      email: "asfahim@gmail.com",
-      quantity: 3,
-      totalPrice: 200,
-    },
-  ];
-
   return (
     <div>
       <h2 className="font-semibold md:text-[24px] mb-4">Order Data</h2>
@@ -103,6 +93,14 @@ const Orders = () => {
           columns={columns}
           dataSource={tableData}
           pagination={false}
+        />
+      </div>
+      <div className="flex item-center justify-center mt-6">
+        <Pagination
+          current={page}
+          onChange={(value) => setPage(value)}
+          pageSize={metaData?.limit}
+          total={metaData?.total}
         />
       </div>
     </div>

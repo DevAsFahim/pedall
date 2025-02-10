@@ -1,5 +1,8 @@
 import { Layout, Menu } from "antd";
 import logo from "../../assets/logo.png";
+import { useAppSelector } from "../../redux/hooks";
+import { selectCurrentUser } from "../../redux/features/auth/authSlice";
+import { adminItems, customerItems } from "../../constants/sidebar";
 // import { sidebarItemsGenerator } from "../../utils/sidebarItemsGenerator";
 // import { adminPaths } from "../../routes/admin.routes";
 // import { facultyPaths } from "../../routes/faculty.routes";
@@ -16,18 +19,17 @@ const { Sider } = Layout;
 // };
 
 const SideBar = () => {
-  //   const user = useAppSelector(selectCurrentUser);
+  const user = useAppSelector(selectCurrentUser);
 
-  const sidebarItems = [
-    {
-      key: "Dashboard",
-      label: "Dashboard",
-    },
-    {
-      key: "Dashboaard",
-      label: "Dashboaard",
-    },
-  ];
+  let sidebarItems;
+
+  switch (user!.role) {
+    case "admin":
+      sidebarItems = adminItems;
+      break;
+    case "customer":
+      sidebarItems = customerItems;
+  }
 
   //   switch (user!.role) {
   //     case userRole.ADMIN:

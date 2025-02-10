@@ -1,4 +1,4 @@
-import { Space, Table, TableProps, Tag } from "antd";
+import { Table, TableProps } from "antd";
 
 interface DataType {
   key: string;
@@ -85,7 +85,11 @@ const OrderData = () => {
       <h2 className="font-semibold md:text-[24px] mb-4">Order Data</h2>
 
       <div className="overflow-x-scroll overflow-hidden">
-      <Table<DataType> columns={columns} dataSource={data} pagination={false} />
+        <Table<DataType>
+          columns={columns}
+          dataSource={data}
+          pagination={false}
+        />
       </div>
     </div>
   );

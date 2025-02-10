@@ -2,18 +2,7 @@ import { useState } from "react";
 import { useGetAllBicyclesQuery } from "../../redux/features/bicycle/bicycleApi";
 import { BicycleCard } from "./BicycleCard";
 import { Pagination } from "antd";
-
-type TBicycleData = {
-  _id: string;
-  image: string;
-  name: string;
-  price: number;
-  quantity: number;
-  brand: string;
-  model: string;
-  type: string;
-  description: string;
-};
+import { TBicycle } from "../../types/bicycle.type";
 
 export function AllBicycles() {
   const [page, setPage] = useState(1);
@@ -28,7 +17,7 @@ export function AllBicycles() {
     <div className="p-container py-8 mt-10 lg:mt-24">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {bicycleData?.data &&
-          bicycleData?.data.map((bicycle: TBicycleData) => (
+          bicycleData?.data.map((bicycle: TBicycle) => (
             <BicycleCard key={bicycle._id} bicycleData={bicycle} />
           ))}
       </div>

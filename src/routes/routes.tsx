@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
-import CreateBicycle from "../pages/bicycle/createBicycle";
 import Home from "../pages/Home";
 import Bicycles from "../pages/bicycle/Bicycles";
 import SingleBicycle from "../pages/bicycle/SingleBicycle";
@@ -10,6 +9,9 @@ import About from "../pages/About";
 import Dashboard from "../pages/dashboard/Main";
 import AdminDashboard from "../pages/dashboard/admin/Dashboard";
 import Orders from "../pages/dashboard/admin/Orders";
+import CreateBicycle from "../pages/dashboard/admin/createBicycle";
+import AdminBicycles from "../pages/dashboard/admin/Bicycles";
+import CustomerDashboard from "../pages/dashboard/customer/Dashboard";
 
 const routes = createBrowserRouter([
   {
@@ -19,10 +21,6 @@ const routes = createBrowserRouter([
       {
         index: true,
         element: <Home />,
-      },
-      {
-        path: "/create-bicycle",
-        element: <CreateBicycle />,
       },
       {
         path: "/products",
@@ -49,6 +47,24 @@ const routes = createBrowserRouter([
       {
         path: "dashboard",
         element: <AdminDashboard />,
+      },
+      {
+        path: "create-bicycle",
+        element: <CreateBicycle />,
+      },
+      {
+        path: "bicycles",
+        element: <AdminBicycles />,
+      },
+    ],
+  },
+  {
+    path: "/user",
+    element: <Dashboard />,
+    children: [
+      {
+        path: "dashboard",
+        element: <CustomerDashboard />,
       },
     ],
   },
