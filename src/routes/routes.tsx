@@ -14,6 +14,7 @@ import AdminBicycles from "../pages/dashboard/admin/Bicycles";
 import CustomerDashboard from "../pages/dashboard/customer/Dashboard";
 import ProtectedRoute from "../components/layouts/ProtectedRoute";
 import CheckoutPage from "../pages/Checkout";
+import VerifyOrder from "../pages/VerifyOrder";
 
 const routes = createBrowserRouter([
   {
@@ -41,6 +42,14 @@ const routes = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <CheckoutPage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "order/verify",
+        element: (
+          <ProtectedRoute>
+            <VerifyOrder />
           </ProtectedRoute>
         ),
       },

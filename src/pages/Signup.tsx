@@ -18,6 +18,7 @@ const Signup = () => {
         name: data.name,
         email: data.email,
         password: data.password,
+        address: data.address
       };
       const res = await signup(userData);
       console.log(res);
