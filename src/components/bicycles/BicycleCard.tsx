@@ -1,5 +1,7 @@
 import { FaCartPlus } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { useAppDispatch } from "../../redux/hooks";
+import { addToCart } from "../../redux/features/cart/cartSlice";
 
 interface ProductCardProps {
   bicycleData: {
@@ -16,6 +18,20 @@ interface ProductCardProps {
 }
 export function BicycleCard({ bicycleData }: ProductCardProps) {
   const { image, name, price, brand, _id } = bicycleData;
+  const dispatch = useAppDispatch();
+
+  const handleAddToCart = () => {
+    dispatch(
+      addToCart({
+        product: _id,
+        name: name,
+        price: price,
+        quantity: 1,
+        stockQuantity: bicycleData.quantity,
+        imageUrl: image,
+      })
+    );
+  };
 
   return (
     <div className="overflow-hidden group ">
@@ -26,7 +42,7 @@ export function BicycleCard({ bicycleData }: ProductCardProps) {
           className="object-contain w-full h-full rounded-lg max-w-[70%] group-hover:scale-105 transition-all duration-500"
         />
         <div className="p-4 pt-0 absolute left-1/2 -bottom-10 opacity-0 invisible -translate-x-1/2 w-full group-hover:opacity-100 group-hover:visible group-hover:bottom-0 transition-all duration-500 ease-in-out">
-          <button className="flex items-center whitespace-nowrap w-full justify-center gap-4 bg-primary-text text-[20px] font-semibold px-8 py-2 rounded-full text-white hover:gap-5 hover:bg-deep-blue transition-all cursor-pointer ">
+          <button onClick={handleAddToCart} className="flex items-center whitespace-nowrap w-full justify-center gap-4 bg-primary-text text-[20px] font-semibold px-8 py-2 rounded-full text-white hover:gap-5 hover:bg-deep-blue transition-all cursor-pointer ">
             Add to cart
             <FaCartPlus />
           </button>

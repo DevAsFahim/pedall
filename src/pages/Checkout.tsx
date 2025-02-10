@@ -2,6 +2,12 @@
 
 import { useState } from "react";
 import Image from "../assets/products/p-1.png";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import {
+  removeFromCart,
+  updateQuantity,
+} from "../redux/features/cart/cartSlice";
+import { FaTrash } from "react-icons/fa6";
 
 interface CartItem {
   id: number;
@@ -12,61 +18,40 @@ interface CartItem {
 }
 
 export default function CheckoutPage() {
-  const [cartItems, setCartItems] = useState<CartItem[]>([
-    {
-      id: 1,
-      name: "Bike Pumper",
-      price: 380,
-      quantity: 2,
-      image: Image,
-    },
-    {
-      id: 2,
-      name: "Bike Helmate",
-      price: 542,
-      quantity: 2,
-      image: Image,
-    },
-  ]);
-
-  const updateQuantity = (id: number, change: number) => {
-    setCartItems((items) =>
-      items.map((item) =>
-        item.id === id
-          ? { ...item, quantity: Math.max(1, item.quantity + change) }
-          : item
-      )
-    );
-  };
-
-  const subtotal = cartItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  );
+  const dispatch = useAppDispatch();
+  const cartData = useAppSelector((state) => state.cart);
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-24">
       <div className="flex flex-col lg:flex-row gap-8">
-        {/* Cart Items */}
         <div className="lg:w-2/3">
-          <div className="bg-white rounded-lg shadow-md p-6 mb-4">
+          <div className="bg-white rounded-lg shadow-sm p-6 mb-4">
             <table className="w-full">
               <thead>
-                <tr className="border-b">
-                  <th className="text-left py-4">Product</th>
-                  <th className="text-left py-4">Name</th>
-                  <th className="text-left py-4">Price</th>
-                  <th className="text-left py-4">Quantity</th>
-                  <th className="text-right py-4">Total</th>
+                <tr className="border-b border-b-gray-300">
+                  <th className="text-left py-4 text-primary-text pr-8"></th>
+                  <th className="text-left py-4 text-primary-text">Product</th>
+                  <th className="text-left py-4 text-primary-text">Name</th>
+                  <th className="text-left py-4 text-primary-text">Price</th>
+                  <th className="text-left py-4 text-primary-text">Quantity</th>
+                  <th className="text-right py-4 text-primary-text">Total</th>
                 </tr>
               </thead>
               <tbody>
-                {cartItems.map((item) => (
-                  <tr key={item.id} className="border-b">
+                {cartData.items.map((item) => (
+                  <tr key={item.product} className="border-b border-b-gray-300 last:border-b-0">
+                    <td>
+                      <button
+                        onClick={() => dispatch(removeFromCart(item.product))}
+                        className="cursor-pointer"
+                      >
+                        <FaTrash className="text-red-600" />
+                      </button>
+                    </td>
                     <td className="py-4">
-                      <div className="w-20 h-20 bg-gray-100 rounded-lg overflow-hidden">
+                      <div className="w-20 h-20 bg-gray-100 rounded-lg overflow-hidden flex items-center justify-center px-2">
                         <img
-                          src={item.image || "/placeholder.svg"}
+                          src={item.imageUrl || "/placeholder.svg"}
                           alt={item.name}
                           width={80}
                           height={80}
@@ -79,14 +64,31 @@ export default function CheckoutPage() {
                     <td className="py-4">
                       <div className="flex items-center gap-2">
                         <button
-                          onClick={() => updateQuantity(item.id, -1)}
+                          onClick={() =>
+                            dispatch(
+                              updateQuantity({
+                                id: item.product,
+                                quantity: Math.max(item.quantity - 1, 1),
+                              })
+                            )
+                          }
                           className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100"
                         >
                           -
                         </button>
                         <span className="w-8 text-center">{item.quantity}</span>
                         <button
-                          onClick={() => updateQuantity(item.id, 1)}
+                          onClick={() =>
+                            dispatch(
+                              updateQuantity({
+                                id: item.product,
+                                quantity: Math.min(
+                                  item.quantity + 1,
+                                  item.stockQuantity
+                                ),
+                              })
+                            )
+                          }
                           className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100"
                         >
                           +
@@ -105,10 +107,10 @@ export default function CheckoutPage() {
 
         {/* Order Summary and User Info */}
         <div className="lg:w-1/3">
-          <div className="bg-white rounded-lg shadow-md p-6">
+          <div className="bg-white rounded-lg shadow-sm p-6">
             {/* User Information */}
-            <div className="mb-6 pb-6 border-b">
-              <h2 className="text-lg font-semibold mb-4">
+            <div className="mb-6 pb-6 border-b border-b-gray-300">
+              <h2 className="text-lg font-semibold mb-4 text-primary-text">
                 Customer Information
               </h2>
               <div className="space-y-3">
@@ -151,16 +153,16 @@ export default function CheckoutPage() {
               <div className="space-y-4">
                 <div className="flex justify-between">
                   <span>Subtotal</span>
-                  <span>${subtotal}</span>
+                  <span>${cartData.totalPrice}</span>
                 </div>
-                <div className="border-t pt-4">
+                <div className="border-t border-t-gray-300 pt-4">
                   <div className="flex justify-between font-semibold">
                     <span>Total</span>
-                    <span>${subtotal}</span>
+                    <span>${cartData.totalPrice}</span>
                   </div>
                 </div>
-                <button className="w-full bg-black text-white py-3 rounded-lg hover:bg-gray-800 transition-colors">
-                  Proceed To Checkout
+                <button className="primary-btn w-full justify-center mt-10">
+                  Order Now
                 </button>
               </div>
             </div>

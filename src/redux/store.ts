@@ -1,5 +1,6 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import authReducer from "./features/auth/authSlice";
+import cartReducer from "./features/cart/cartSlice";
 import { baseApi } from "./api/baseApi";
 import {
   persistStore,
@@ -14,25 +15,30 @@ import {
 import storage from "redux-persist/lib/storage";
 import { imgbbApi } from "./api/imgbbApi";
 
+export const rootReducer = combineReducers({
+  [baseApi.reducerPath]: baseApi.reducer,
+  [imgbbApi.reducerPath]: imgbbApi.reducer,
+  auth: authReducer,
+  cart: cartReducer,
+});
+
 const persistConfig = {
-  key: "auth",
+  key: "root",
   storage,
 };
 
-const persistedAuthReducer = persistReducer(persistConfig, authReducer);
+const persistedAuthReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
-  reducer: {
-    [baseApi.reducerPath]: baseApi.reducer,
-    [imgbbApi.reducerPath]: imgbbApi.reducer,
-    auth: persistedAuthReducer,
-  },
+  reducer: persistedAuthReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(baseApi.middleware).concat(imgbbApi.middleware),
+    })
+      .concat(baseApi.middleware)
+      .concat(imgbbApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
