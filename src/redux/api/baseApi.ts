@@ -9,10 +9,11 @@ import {
 } from "@reduxjs/toolkit/query/react";
 import { RootState } from "../store";
 import { logOut, setUser } from "../features/auth/authSlice";
+import { toast } from "sonner";
 
+// baseUrl: "https://pedal-power.vercel.app/api",
 const baseQuery = fetchBaseQuery({
-  // baseUrl: "https://pedal-power.vercel.app/api",
-  baseUrl: "http://localhost5000/api",
+  baseUrl: "http://localhost:5000/api",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;
@@ -32,9 +33,9 @@ const baseQueryWithRefreshToken: BaseQueryFn<
 > = async (args, api, extraOptions): Promise<any> => {
   let result = await baseQuery(args, api, extraOptions);
 
-  // if (result?.error?.status === 404) {
-  //   toast.error(result?.error?.data?.message);
-  // }
+  if (result?.error?.status === 404) {
+    toast.error(result?.error?.data?.message);
+  }
 
   if (result.error?.status === 401) {
     // send refresh token

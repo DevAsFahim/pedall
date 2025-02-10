@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { FiMenu, FiX } from "react-icons/fi";
 
 import logo from "../assets/logo.png";
+import { FaCartShopping } from "react-icons/fa6";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -38,18 +39,24 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Buttons */}
-        <div className="hidden md:flex items-center">
+        <div className="hidden md:flex items-center gap-5">
+          <Link
+            to="/checkout"
+            className="cursor-pointer text-xl mr-3 hover:text-primary text-primary-text"
+          >
+            <FaCartShopping />
+          </Link>
           {!user ? (
             <>
               <Link
                 to="/login"
-                className="bg-primary text-[18px] font-semibold px-6 py-2 rounded-full text-white hover:bg-deep-blue transition-all"
+                className="bg-primary text-[18px] font-semibold px-6 py-2 rounded-full text-white hover:bg-deep-blue transition-all cursor-pointer"
               >
                 Login
               </Link>
               <Link
                 to="/signup"
-                className="bg-primary text-[18px] font-semibold px-6 py-2 rounded-full text-white hover:bg-deep-blue transition-all"
+                className="bg-primary text-[18px] font-semibold px-6 py-2 rounded-full text-white hover:bg-deep-blue transition-all cursor-pointer"
               >
                 Sign up
               </Link>
@@ -57,7 +64,7 @@ const Navbar = () => {
           ) : (
             <button
               onClick={handleLogout}
-              className="bg-primary text-[18px] font-semibold px-6 py-2 rounded-full text-white hover:bg-deep-blue transition-all"
+              className="bg-primary text-[18px] font-semibold px-6 py-2 rounded-full text-white hover:bg-deep-blue transition-all cursor-pointer"
             >
               Logout
             </button>
@@ -82,7 +89,7 @@ const Navbar = () => {
           className="text-primary text-3xl absolute top-5 right-5"
           onClick={() => setMenuOpen(!menuOpen)}
         >
-         <FiX />
+          <FiX />
         </button>
         <Link
           to="/"
@@ -107,26 +114,26 @@ const Navbar = () => {
         </Link>
 
         {!user ? (
-          <>
+          <div className="flex gap-5">
             <Link
               to="/login"
-              className="mt-5 bg-primary text-xl px-6 py-2 rounded-full text-white hover:bg-deep-blue transition-all"
+              className="mt-5 bg-primary text-xl px-6 py-2 rounded-full text-white hover:bg-deep-blue transition-all cursor-pointer"
               onClick={() => setMenuOpen(false)}
             >
               Login
             </Link>
             <Link
               to="/signup"
-              className="mt-3 bg-primary text-xl px-6 py-2 rounded-full text-white hover:bg-deep-blue transition-all"
+              className="mt-3 bg-primary text-xl px-6 py-2 rounded-full text-white hover:bg-deep-blue transition-all cursor-pointer"
               onClick={() => setMenuOpen(false)}
             >
               Sign up
             </Link>
-          </>
+          </div>
         ) : (
           <button
             onClick={handleLogout}
-            className="mt-5 bg-primary text-xl px-6 py-2 rounded-full text-white hover:bg-deep-blue transition-all"
+            className="mt-5 bg-primary text-xl px-6 py-2 rounded-full text-white hover:bg-deep-blue transition-all cursor-pointer"
           >
             Logout
           </button>
