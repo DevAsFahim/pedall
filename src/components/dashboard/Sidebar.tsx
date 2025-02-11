@@ -3,6 +3,7 @@ import logo from "../../assets/logo.png";
 import { useAppSelector } from "../../redux/hooks";
 import { selectCurrentUser } from "../../redux/features/auth/authSlice";
 import { adminItems, customerItems } from "../../constants/sidebar";
+import { Link } from "react-router-dom";
 // import { sidebarItemsGenerator } from "../../utils/sidebarItemsGenerator";
 // import { adminPaths } from "../../routes/admin.routes";
 // import { facultyPaths } from "../../routes/faculty.routes";
@@ -54,7 +55,8 @@ const SideBar = () => {
       //   console.log(collapsed, type);
       // }}
     >
-      <div
+      <Link
+        to="/"
         style={{
           width: "120px",
           margin: "0 auto",
@@ -65,7 +67,7 @@ const SideBar = () => {
         }}
       >
         <img src={logo} alt="logo" />
-      </div>
+      </Link>
       <Menu
         theme="dark"
         mode="inline"

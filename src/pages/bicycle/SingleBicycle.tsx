@@ -4,8 +4,12 @@ import Banner from "../../components/bicycles/Banner";
 import { useState } from "react";
 import { FaCartPlus, FaMinus, FaPlus } from "react-icons/fa6";
 import LoadingSpinner from "../LoadingSpinner";
+import { useAppDispatch } from "../../redux/hooks";
+import { addToCart } from "../../redux/features/cart/cartSlice";
+import { toast } from "sonner";
 
 const SingleBicycle = () => {
+  const dispatch = useAppDispatch();
   const { bicycleId } = useParams();
   const { data: bicycleData, isLoading } = useGetSingleBicycleQuery(bicycleId);
   const [orderQuantity, setOrderQuantity] = useState(1);
@@ -15,13 +19,30 @@ const SingleBicycle = () => {
     return <LoadingSpinner />;
   }
 
-  const { name, brand, price, image, quantity, type, model } = bicycleData.data;
+  const { _id, name, brand, price, image, quantity, type, model } =
+    bicycleData.data;
+
+  const handleAddToCart = () => {
+    const toastId = toast.loading('Adding to cart')
+    dispatch(
+      addToCart({
+        product: _id,
+        name: name,
+        price: price,
+        quantity: orderQuantity,
+        stockQuantity: bicycleData.data.quantity,
+        imageUrl: image,
+      })
+    );
+    toast.success('Added to cart', {id: toastId})
+
+  };
 
   return (
     <>
       <Banner productName={name} brand={brand} />
 
-      <div className="mt-24 p-container">
+      <div className="py-24 p-container">
         <div className="flex flex-col md:flex-row gap-8">
           <div className="w-full py-[50px] lg:py-[100px] bg-[#E6E6E6] flex items-center justify-center flex-1 lg:basis-[60%]">
             <img
@@ -78,7 +99,7 @@ const SingleBicycle = () => {
                 </button>
               </div>
 
-              <button className="add-to-cart-button">
+              <button onClick={handleAddToCart} className="add-to-cart-button">
                 Add to cart
                 <FaCartPlus />
               </button>

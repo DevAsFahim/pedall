@@ -6,9 +6,10 @@ type TInputProps = {
   name: string;
   label?: string;
   disabled?: boolean;
+  placeholder?: string;
 };
 
-const PInput = ({ type, name, label, disabled }: TInputProps) => {
+const PInput = ({ type, name, label, disabled, placeholder }: TInputProps) => {
   return (
     <div className="mb-5">
       <Controller
@@ -21,6 +22,7 @@ const PInput = ({ type, name, label, disabled }: TInputProps) => {
               id={name}
               size="large"
               disabled={disabled}
+              placeholder={placeholder}
             />
           </Form.Item>
         )}

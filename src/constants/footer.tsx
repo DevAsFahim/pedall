@@ -1,3 +1,5 @@
+import { FaFacebook, FaLinkedin } from "react-icons/fa6";
+
 type TFooterLinks = {
   company: Array<{ name: string; link: string }>;
   category: Array<{ name: string; link: string }>;
@@ -52,3 +54,14 @@ export const footerLinks: TFooterLinks = {
     },
   ],
 };
+
+export const socialLinks = [
+  {
+    icon: <FaFacebook />,
+    link: 'https://www.facebook.com/as.fahim.735'
+  },
+  {
+    icon: <FaLinkedin />,
+    link: 'https://www.linkedin.com/in/dev-as-fahim/'
+  },
+] 

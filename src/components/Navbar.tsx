@@ -8,6 +8,7 @@ import logo from "../assets/logo.png";
 import { FaCartShopping } from "react-icons/fa6";
 
 const Navbar = () => {
+  const cartData = useAppSelector((state) => state.cart);
   const [menuOpen, setMenuOpen] = useState(false);
   const user = useAppSelector(selectCurrentUser);
   const dispatch = useAppDispatch();
@@ -36,16 +37,35 @@ const Navbar = () => {
           <Link to="/products" className="hover:text-primary">
             Products
           </Link>
+          {user ? (
+            <Link
+              to={`/${user?.role === "admin" ? "admin" : "user"}/dashboard`}
+              className="hover:text-primary"
+            >
+              Dashboard
+            </Link>
+          ) : (
+            ""
+          )}
         </div>
 
         {/* Desktop Buttons */}
         <div className="hidden md:flex items-center gap-5">
-          <Link
-            to="/checkout"
-            className="cursor-pointer text-xl mr-3 hover:text-primary text-primary-text"
-          >
-            <FaCartShopping />
-          </Link>
+          <div className="relative flex items-center mr-3">
+            <Link
+              to="/checkout"
+              className="cursor-pointer text-xl hover:text-primary text-primary-text"
+            >
+              <FaCartShopping />
+            </Link>
+            {cartData.totalQuantity ? (
+              <div className="absolute -top-1.5 -right-1.5 bg-primary rounded-full aspect-square flex items-center justify-center w-3 text-[8px] text-white">
+                {cartData.totalQuantity}
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
           {!user ? (
             <>
               <Link
@@ -83,7 +103,7 @@ const Navbar = () => {
       <div
         className={`fixed top-0 right-0 z-50 h-full w-full bg-muted-body transform transition-transform duration-300 ease-in-out ${
           menuOpen ? "translate-x-0" : "translate-x-full"
-        } md:hidden flex flex-col items-start px-20 pt-20`}
+        } md:hidden flex flex-col items-start px-16 pt-20`}
       >
         <button
           className="text-primary text-3xl absolute top-5 right-5"
@@ -112,19 +132,46 @@ const Navbar = () => {
         >
           Products
         </Link>
+        {user ? (
+          <Link
+            to={`/${user?.role === "admin" ? "admin" : "user"}/dashboard`}
+            className="py-3 text-xl text-primary-text hover:text-primary"
+            onClick={() => setMenuOpen(false)}
+          >
+            Dashboard
+          </Link>
+        ) : (
+          ""
+        )}
+
+<div className="relative flex items-center mr-3">
+            <Link
+              to="/checkout"
+              className="cursor-pointer text-xl hover:text-primary text-primary-text"
+            >
+              <FaCartShopping />
+            </Link>
+            {cartData.totalQuantity ? (
+              <div className="absolute -top-1.5 -right-1.5 bg-primary rounded-full aspect-square flex items-center justify-center w-3 text-[8px] text-white">
+                {cartData.totalQuantity}
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
 
         {!user ? (
           <div className="flex gap-5">
             <Link
               to="/login"
-              className="mt-5 bg-primary text-xl px-6 py-2 rounded-full text-white hover:bg-deep-blue transition-all cursor-pointer"
+              className="mt-5 bg-primary text-sm px-6 py-2 rounded-full text-white hover:bg-deep-blue transition-all cursor-pointer"
               onClick={() => setMenuOpen(false)}
             >
               Login
             </Link>
             <Link
               to="/signup"
-              className="mt-3 bg-primary text-xl px-6 py-2 rounded-full text-white hover:bg-deep-blue transition-all cursor-pointer"
+              className="mt-5 bg-primary text-sm px-6 py-2 rounded-full text-white hover:bg-deep-blue transition-all cursor-pointer"
               onClick={() => setMenuOpen(false)}
             >
               Sign up

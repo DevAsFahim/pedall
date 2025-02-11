@@ -1,7 +1,6 @@
 import { Link, useSearchParams } from "react-router-dom";
-import { Spin, Card, Tag, Row, Col, Button } from "antd";
+import { Spin, Card, Tag, Row, Col } from "antd";
 import { useVerifyOrderQuery } from "../redux/features/order/orderApi";
-import { FaCheckCircle, FaExclamation } from "react-icons/fa";
 import { LoadingOutlined } from "@ant-design/icons";
 
 interface OrderData {
@@ -62,24 +61,24 @@ export default function VerifyOrder() {
     return <Tag color={statusColor}>{status}</Tag>;
   };
 
-  const verificationStatus = () => (
-    <div className="flex items-center gap-2">
-      {orderData?.is_verify === 1 ? (
-        <>
-          <FaCheckCircle className="text-green-500 text-xl" />
-          <span className="text-green-600 font-medium">Verified</span>
-        </>
-      ) : (
-        <>
-          <FaExclamation className="text-yellow-500 text-xl" />
-          <span className="text-yellow-600 font-medium">Not Verified</span>
-        </>
-      )}
-    </div>
-  );
+  // const verificationStatus = () => (
+  //   <div className="flex items-center gap-2">
+  //     {orderData?.is_verify === 1 ? (
+  //       <>
+  //         <FaCheckCircle className="text-green-500 text-xl" />
+  //         <span className="text-green-600 font-medium">Verified</span>
+  //       </>
+  //     ) : (
+  //       <>
+  //         <FaExclamation className="text-yellow-500 text-xl" />
+  //         <span className="text-yellow-600 font-medium">Not Verified</span>
+  //       </>
+  //     )}
+  //   </div>
+  // );
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="p-container py-24">
       <h1 className="text-3xl font-bold mb-6 text-gray-800">
         Order Verification
       </h1>
@@ -154,8 +153,7 @@ export default function VerifyOrder() {
           </Card>
         </Col>
 
-        {/* Verification Status */}
-        <Col xs={24} md={12}>
+        {/* <Col xs={24} md={12}>
           <Card title="Verification Status" className="shadow-md">
             <div className="flex flex-col gap-6">
               <div className="text-lg">{verificationStatus()}</div>
@@ -170,8 +168,14 @@ export default function VerifyOrder() {
               </Link>
             </div>
           </Card>
-        </Col>
+        </Col> */}
       </Row>
+
+      <div className="flex justify-center items-center mt-10">
+        <Link to="/" className="primary-btn">
+          Back to Home
+        </Link>
+      </div>
     </div>
   );
 }
