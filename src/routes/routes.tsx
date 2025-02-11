@@ -15,6 +15,7 @@ import CustomerDashboard from "../pages/dashboard/customer/Dashboard";
 import ProtectedRoute from "../components/layouts/ProtectedRoute";
 import CheckoutPage from "../pages/Checkout";
 import VerifyOrder from "../pages/VerifyOrder";
+import ManageUsers from "../pages/dashboard/admin/ManageUsers";
 
 const routes = createBrowserRouter([
   {
@@ -59,6 +60,10 @@ const routes = createBrowserRouter([
     path: "/admin",
     element: <Dashboard />,
     children: [
+      {
+        path: "manage-users",
+        element: <ManageUsers />,
+      },
       {
         path: "orders",
         element: <Orders />,

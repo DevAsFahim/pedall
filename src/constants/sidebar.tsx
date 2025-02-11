@@ -6,6 +6,10 @@ export const adminItems = [
     label: <Link to="/admin/dashboard">Dashboard</Link>,
   },
   {
+    key: "Manage Users",
+    label: <Link to="/admin/manage-users">Manage Users</Link>,
+  },
+  {
     key: "Orders",
     label: <Link to="/admin/orders">Orders</Link>,
   },

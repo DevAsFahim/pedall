@@ -117,7 +117,7 @@ const Bicycles = () => {
           >
             Delete
           </Button>
-          <AddMarksModal itemInfo={item} />
+          <UpdateBicycleModal itemInfo={item} />
         </Space>
       ),
     },
@@ -146,7 +146,7 @@ const Bicycles = () => {
   );
 };
 
-const AddMarksModal = ({ itemInfo }: { itemInfo: IProductInTable }) => {
+const UpdateBicycleModal = ({ itemInfo }: { itemInfo: IProductInTable }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [updateBicycle] = useUpdateBicycleMutation();
 
