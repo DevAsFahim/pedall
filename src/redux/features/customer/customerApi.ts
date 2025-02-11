@@ -19,6 +19,7 @@ const customerApi = baseApi.injectEndpoints({
           params: params,
         };
       },
+      providesTags: ["user"],
     }),
     getACustomer: builder.query({
       query: (email) => {
@@ -35,6 +36,7 @@ const customerApi = baseApi.injectEndpoints({
           method: "DELETE",
         };
       },
+      invalidatesTags: ["user"],
     }),
   }),
 });

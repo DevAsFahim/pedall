@@ -8,9 +8,8 @@ interface DataType {
   key: string;
   name: string;
   email: string;
-  quantity: number;
   totalPrice: number;
-  // status: string;
+  status: string;
 }
 
 const Orders = () => {
@@ -19,22 +18,23 @@ const Orders = () => {
     { name: "page", value: page },
     { name: "sort", value: "id" },
   ]);
-  console.log(orderData)
   const metaData = orderData?.meta;
 
   const tableData: DataType[] = orderData?.data?.result.map(
-    ({ _id, user, product, quantity, totalPrice }: TOrder) => ({
+    ({ _id, user, products, totalPrice, status, transaction }: TOrder) => ({
       key: _id,
-      name: product.name,
-      email: user.email,
-      quantity,
+      name: user?.name,
+      email: user?.email,
+      products,
       totalPrice,
+      status,
+      transactionId: transaction.id,
     })
   );
 
   const columns: TableProps<DataType>["columns"] = [
     {
-      title: "Product Name",
+      title: "User Name",
       dataIndex: "name",
       key: "name",
     },
@@ -44,14 +44,19 @@ const Orders = () => {
       key: "email",
     },
     {
-      title: "Quantity",
-      dataIndex: "quantity",
-      key: "quantity",
+      title: "Status",
+      dataIndex: "status",
+      key: "status",
     },
     {
       title: "Total Price",
       dataIndex: "totalPrice",
       key: "totalPrice",
+    },
+    {
+      title: "Transaction Id",
+      dataIndex: "transactionId",
+      key: "transactionId",
     },
     // {
     //   title: 'Tags',
