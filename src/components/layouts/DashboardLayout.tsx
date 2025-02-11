@@ -1,9 +1,8 @@
-import { Avatar, Layout } from "antd";
+import { Layout } from "antd";
 import { Outlet } from "react-router-dom";
 import Sidebar from "../dashboard/Sidebar";
 import { logOut } from "../../redux/features/auth/authSlice";
 import { useAppDispatch } from "../../redux/hooks";
-import { FaUser } from "react-icons/fa6";
 const { Header, Content } = Layout;
 
 export const DashboardLayout = () => {
