@@ -28,4 +28,12 @@ export const customerItems = [
     key: "Dashboard",
     label: <Link to="/user/dashboard">Dashboard</Link>,
   },
+  {
+    key: "My Orders",
+    label: <Link to="/user/my-orders">My Orders</Link>,
+  },
+  {
+    key: "Change Password",
+    label: <Link to="/user/change-password">Change Password</Link>,
+  },
 ];

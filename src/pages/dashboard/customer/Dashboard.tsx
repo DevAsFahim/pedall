@@ -1,8 +1,9 @@
-import { selectCurrentUser } from "../../../redux/features/auth/authSlice";
-import { useAppSelector } from "../../../redux/hooks";
+import MyOrders from "../../../components/dashboard/customer/MyOrders";
+import { useGetMeQuery } from "../../../redux/features/customer/customerApi";
 
 const Dashboard = () => {
-  const user = useAppSelector(selectCurrentUser);
+  const { data: userData } = useGetMeQuery(undefined);
+  console.log(userData);
 
   const orders = [
     { id: "ORD001", date: "2025-05-15", status: "Completed", total: 599.99 },
@@ -14,7 +15,6 @@ const Dashboard = () => {
   return (
     <div className="bg-gray-100 min-h-screen">
       <main className="">
-        {/* Account Overview Section */}
         <div className="px-4 py-6 sm:px-0">
           <div className="bg-white shadow rounded-lg p-6">
             <h2 className="text-xl font-semibold mb-4">Account Overview</h2>
@@ -22,19 +22,23 @@ const Dashboard = () => {
               <div>
                 <p className="text-gray-600">
                   Name:{" "}
-                  <span className="font-medium text-gray-800">AS Fahim</span>
+                  <span className="font-medium text-gray-800">
+                    {userData?.data?.name}
+                  </span>
                 </p>
                 <p className="text-gray-600">
                   Email:{" "}
                   <span className="font-medium text-gray-800">
-                    {user?.email}
+                    {userData?.data?.email}
                   </span>
                 </p>
               </div>
               <div>
                 <p className="text-gray-600">
-                  Member Since:{" "}
-                  <span className="font-medium text-gray-800">May 1, 2024</span>
+                  Address:
+                  <span className="font-medium text-gray-800">
+                    {userData?.data?.address}
+                  </span>
                 </p>
                 <p className="text-gray-600">
                   Total Orders:{" "}
@@ -47,61 +51,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Recent Orders Section */}
-        <div className="mt-8 px-4 py-6 sm:px-0">
-          <div className="bg-white shadow rounded-lg p-6">
-            <h2 className="text-xl font-semibold mb-4">Recent Orders</h2>
-            <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Order ID
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Date
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Status
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Total
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                  {orders.map((order) => (
-                    <tr key={order.id}>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                        {order.id}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {order.date}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        <span
-                          className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
-                          ${
-                            order.status === "Completed"
-                              ? "bg-green-100 text-green-800"
-                              : order.status === "Pending"
-                              ? "bg-yellow-100 text-yellow-800"
-                              : "bg-red-100 text-red-800"
-                          }`}
-                        >
-                          {order.status}
-                        </span>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        ${order.total.toFixed(2)}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
+        <MyOrders />
       </main>
     </div>
   );

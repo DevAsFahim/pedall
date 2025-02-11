@@ -16,6 +16,8 @@ import ProtectedRoute from "../components/layouts/ProtectedRoute";
 import CheckoutPage from "../pages/Checkout";
 import VerifyOrder from "../pages/VerifyOrder";
 import ManageUsers from "../pages/dashboard/admin/ManageUsers";
+import MyOrders from "../pages/dashboard/customer/MyOrders";
+import ChangePassword from "../pages/dashboard/customer/ChangePassword";
 
 const routes = createBrowserRouter([
   {
@@ -89,6 +91,14 @@ const routes = createBrowserRouter([
       {
         path: "dashboard",
         element: <CustomerDashboard />,
+      },
+      {
+        path: "my-orders",
+        element: <MyOrders />,
+      },
+      {
+        path: "change-password",
+        element: <ChangePassword />,
       },
     ],
   },

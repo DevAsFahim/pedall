@@ -29,6 +29,14 @@ const customerApi = baseApi.injectEndpoints({
         };
       },
     }),
+    getMe: builder.query({
+      query: () => {
+        return {
+          url: `/users/me`,
+          method: "GET",
+        };
+      },
+    }),
     blockACustomer: builder.mutation({
       query: (email) => {
         return {
@@ -45,4 +53,5 @@ export const {
   useGetACustomerQuery,
   useGetAllCustomerQuery,
   useBlockACustomerMutation,
+  useGetMeQuery,
 } = customerApi;

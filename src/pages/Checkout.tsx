@@ -16,8 +16,6 @@ export default function CheckoutPage() {
   const cartData = useAppSelector((state) => state.cart);
   const user = useAppSelector(selectCurrentUser);
 
-  console.log(cartData.items)
-
   const email = user?.email;
   const { data: userData, isLoading } = useGetACustomerQuery(email);
 
@@ -25,7 +23,8 @@ export default function CheckoutPage() {
     useCreateOrderMutation();
 
   const handlePlaceOrder = async () => {
-    await createOrder({ products: cartData.items });
+    const res =await createOrder({ products: cartData.items });
+    console.log(res)
   };
 
   const toastId = "cart";

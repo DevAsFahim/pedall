@@ -26,7 +26,6 @@ export const DashboardLayout = () => {
             >
               Logout
             </button>
-            <Avatar style={{ backgroundColor: '#87d068' }} icon={<FaUser />} />
           </div>
         </Header>
         <Content style={{ margin: "24px 16px 0" }}>
