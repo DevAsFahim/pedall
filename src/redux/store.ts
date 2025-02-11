@@ -25,6 +25,8 @@ export const rootReducer = combineReducers({
 const persistConfig = {
   key: "root",
   storage,
+  // Blacklist the API reducers
+  blacklist: [baseApi.reducerPath, imgbbApi.reducerPath],
 };
 
 const persistedAuthReducer = persistReducer(persistConfig, rootReducer);

@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { toast } from "sonner";
 
 export interface ICartItem {
   product: string;
@@ -29,6 +30,14 @@ const cartSlice = createSlice({
       const existingItem = state.items.find(
         (item) => item.product === action.payload.product
       );
+      if (
+        existingItem &&
+        existingItem.stockQuantity <
+          existingItem.quantity + action.payload.quantity
+      ) {
+        toast.error("Unavailable stock");
+        return;
+      }
       if (existingItem) {
         existingItem.quantity += action.payload.quantity;
       } else {
@@ -43,6 +52,17 @@ const cartSlice = createSlice({
     ) {
       const { id, quantity } = action.payload;
       const existingItem = state.items.find((item) => item.product === id);
+
+      if (
+        existingItem &&
+        existingItem.quantity === quantity &&
+        quantity != 1 &&
+        existingItem.quantity != 1
+      ) {
+        toast.error("Unavailable stock");
+        return;
+      }
+
       if (existingItem && quantity > 0) {
         const quantityDifference = quantity - existingItem.quantity;
         existingItem.quantity = quantity;

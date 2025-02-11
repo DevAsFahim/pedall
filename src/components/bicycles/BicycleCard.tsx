@@ -1,5 +1,5 @@
 import { FaCartPlus } from "react-icons/fa6";
-import { Link, Links } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAppDispatch } from "../../redux/hooks";
 import { addToCart } from "../../redux/features/cart/cartSlice";
 import { toast } from "sonner";

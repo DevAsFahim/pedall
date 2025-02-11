@@ -5,9 +5,13 @@ import { TBicycle } from "../../../types/bicycle.type";
 import {
   useDeleteBicycleMutation,
   useGetAllBicyclesQuery,
+  useUpdateBicycleMutation,
 } from "../../../redux/features/bicycle/bicycleApi";
 import { FaExclamation } from "react-icons/fa6";
 import { toast } from "sonner";
+import PForm from "../../../components/form/PForm";
+import PInput from "../../../components/form/PInput";
+import { FieldValues, SubmitHandler } from "react-hook-form";
 
 interface DataType {
   key: string;
@@ -17,6 +21,14 @@ interface DataType {
   price: number;
   quantity: number;
   // status: string;
+}
+interface IProductInTable {
+  key: string;
+  name: string;
+  brand: string;
+  model: string;
+  price: number;
+  quantity: number;
 }
 
 const Bicycles = () => {
@@ -105,9 +117,7 @@ const Bicycles = () => {
           >
             Delete
           </Button>
-          <Button color="primary" variant="solid" shape="round" size="small">
-            Update
-          </Button>
+          <AddMarksModal itemInfo={item} />
         </Space>
       ),
     },
@@ -133,6 +143,59 @@ const Bicycles = () => {
         />
       </div>
     </div>
+  );
+};
+
+const AddMarksModal = ({ itemInfo }: { itemInfo: IProductInTable }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [updateBicycle] = useUpdateBicycleMutation();
+
+  const handleSubmit: SubmitHandler<FieldValues> = async (data) => {
+    console.log(data);
+    const updatedData = {
+      price: data?.price,
+      quantity: data?.quantity,
+    };
+
+    await updateBicycle({ id: itemInfo?.key, data: updatedData });
+
+    setIsModalOpen(false);
+  };
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  return (
+    <>
+      <Button
+        onClick={showModal}
+        color="primary"
+        variant="solid"
+        shape="round"
+        size="small"
+      >
+        Update
+      </Button>
+      <Modal
+        title="Update Product"
+        open={isModalOpen}
+        onCancel={handleCancel}
+        footer={null}
+      >
+        <PForm onSubmit={handleSubmit}>
+          <PInput type="text" name="price" label="Price" />
+          <PInput type="text" name="quantity" label="Quantity" />
+          <button className="primary-btn mx-auto" type="submit">
+            Submit
+          </button>
+        </PForm>
+      </Modal>
+    </>
   );
 };
 

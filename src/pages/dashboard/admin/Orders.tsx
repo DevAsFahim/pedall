@@ -19,9 +19,10 @@ const Orders = () => {
     { name: "page", value: page },
     { name: "sort", value: "id" },
   ]);
+  console.log(orderData)
   const metaData = orderData?.meta;
 
-  const tableData: DataType[] = orderData?.data?.map(
+  const tableData: DataType[] = orderData?.data?.result.map(
     ({ _id, user, product, quantity, totalPrice }: TOrder) => ({
       key: _id,
       name: product.name,

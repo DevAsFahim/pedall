@@ -16,6 +16,8 @@ export default function CheckoutPage() {
   const cartData = useAppSelector((state) => state.cart);
   const user = useAppSelector(selectCurrentUser);
 
+  console.log(cartData.items)
+
   const email = user?.email;
   const { data: userData, isLoading } = useGetACustomerQuery(email);
 

@@ -11,6 +11,10 @@ import { RootState } from "../store";
 import { logOut, setUser } from "../features/auth/authSlice";
 import { toast } from "sonner";
 
+type ErrorResponse = {
+  message: string;
+};
+
 // baseUrl: "https://pedal-power.vercel.app/api",
 const baseQuery = fetchBaseQuery({
   baseUrl: "http://localhost:5000/api",
@@ -34,11 +38,11 @@ const baseQueryWithRefreshToken: BaseQueryFn<
   let result = await baseQuery(args, api, extraOptions);
 
   if (result?.error?.status === 400) {
-    toast.error(result?.error?.data?.message);
+    toast.error((result.error.data as ErrorResponse).message);
   }
-  
+
   if (result?.error?.status === 404) {
-    toast.error(result?.error?.data?.message);
+    toast.error((result.error.data as ErrorResponse).message);
   }
 
   if (result.error?.status === 401) {
