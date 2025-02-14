@@ -151,7 +151,6 @@ const UpdateBicycleModal = ({ itemInfo }: { itemInfo: IProductInTable }) => {
   const [updateBicycle] = useUpdateBicycleMutation();
 
   const handleSubmit: SubmitHandler<FieldValues> = async (data) => {
-    console.log(data);
     const updatedData = {
       price: data?.price,
       quantity: data?.quantity,

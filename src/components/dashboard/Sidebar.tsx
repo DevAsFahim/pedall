@@ -32,28 +32,11 @@ const SideBar = () => {
       sidebarItems = customerItems;
   }
 
-  //   switch (user!.role) {
-  //     case userRole.ADMIN:
-  //       sidebarItems = sidebarItemsGenerator(adminPaths, "admin");
-  //       break;
-  //     case userRole.FACULTY:
-  //       sidebarItems = sidebarItemsGenerator(facultyPaths, "faculty");
-  //       break;
-  //     case userRole.STUDENT:
-  //       sidebarItems = sidebarItemsGenerator(studentPaths, "student");
-  //   }
-
   return (
     <Sider
       breakpoint="lg"
       collapsedWidth="0"
       style={{ height: "100vh", position: "sticky", top: "0", left: "0" }}
-      // onBreakpoint={(broken) => {
-      //   console.log(broken);
-      // }}
-      // onCollapse={(collapsed, type) => {
-      //   console.log(collapsed, type);
-      // }}
     >
       <Link
         to="/"

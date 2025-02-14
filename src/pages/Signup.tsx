@@ -11,7 +11,6 @@ const Signup = () => {
   const [signup] = useSignupMutation();
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    console.log(data);
     const toastId = toast.loading("Signing up");
     try {
       const userData = {
@@ -20,8 +19,7 @@ const Signup = () => {
         password: data.password,
         address: data.address
       };
-      const res = await signup(userData);
-      console.log(res);
+      await signup(userData);
 
       toast.success("Signed up successful", { id: toastId, duration: 2000 });
       navigate(`/login`);

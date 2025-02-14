@@ -22,9 +22,7 @@ export function AllBicycles() {
   const metaData = bicycleData?.meta;
 
   const handleSearch: SubmitHandler<FieldValues> = (data) => {
-    console.log(data);
     setSearchTerm(data.search);
-    console.log(searchTerm);
   };
 
   const updateParam = (key: string, value: string) => {

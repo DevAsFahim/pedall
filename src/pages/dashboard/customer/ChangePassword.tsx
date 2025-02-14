@@ -8,7 +8,6 @@ const ChangePassword = () => {
   const [changePassword] = useChangePasswordMutation();
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    console.log(data);
     const toastId = toast.loading("Changing Password");
 
     try {

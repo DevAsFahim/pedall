@@ -10,7 +10,6 @@ const OrderInfo = () => {
     { name: "sort", value: "id" },
   ]);
 
-  console.log(orderData);
   const pendingOrders = orderData?.data?.result?.filter((item: TOrder) => item.status === "Pending")
   const paidOrders = orderData?.data?.result?.filter((item: TOrder) => item.status === "Paid")
 

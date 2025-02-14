@@ -13,10 +13,10 @@ const showDeleteConfirm = () => {
     okType: 'danger',
     cancelText: 'No',
     onOk() {
-      console.log('OK');
+      // console.log('OK');
     },
     onCancel() {
-      console.log('Cancel');
+      // console.log('Cancel');
     },
   });
 };

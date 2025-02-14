@@ -12,7 +12,7 @@ interface DataType {
 
 const MyOrders = () => {
   const { data: orderData } = useGetMyOrdersQuery(undefined);
-  
+
   const tableData: DataType[] = orderData?.data?.map(
     ({ _id, user, products, totalPrice, status, transaction }: TOrder) => ({
       key: _id,
