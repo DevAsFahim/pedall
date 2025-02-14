@@ -15,9 +15,8 @@ type ErrorResponse = {
   message: string;
 };
 
-// baseUrl: "https://pedal-power.vercel.app/api",
 const baseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:5000/api",
+  baseUrl: "https://pedal-power.vercel.app/api",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;
@@ -38,11 +37,11 @@ const baseQueryWithRefreshToken: BaseQueryFn<
   let result = await baseQuery(args, api, extraOptions);
 
   if (result?.error?.status === 400) {
-    toast.error(result?.error?.data?.message);
+    toast.error((result?.error?.data as ErrorResponse).message);
   }
 
   if (result?.error?.status === 404) {
-    toast.error(result?.error?.data?.message);
+    toast.error((result?.error?.data as ErrorResponse).message);
   }
 
   if (result.error?.status === 401) {

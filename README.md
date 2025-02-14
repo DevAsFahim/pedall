@@ -1,50 +1,83 @@
-# React + TypeScript + Vite
+# 🚴 Pedall - Modern Bicycle E-Commerce Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![Live Demo](https://img.shields.io/badge/LIVE%20DEMO-%20-brightgreen?style=for-the-badge)](https://pedall.vercel.app/)
 
-Currently, two official plugins are available:
+A feature-rich bicycle marketplace with modern authentication, role-based access, and seamless payment integration.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Pedall Banner](https://i.ibb.co.com/rfd9TjC6/image.png)
 
-## Expanding the ESLint configuration
+## 🌟 Key Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### 🔐 Secure Authentication
 
-- Configure the top-level `parserOptions` property like this:
+- Role-based user authentication (Customer/Admin)
+- JWT token management with local storage
+- Password hashing & protected routes
+- Profile management with password updates
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### 🛍️ Core Shopping Experience
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- Product browsing with advanced filters & search
+- Real-time stock validation
+- Shopping cart persistence
+- Payment gateway integration (SurjoPay)
+- Order history tracking
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### 📊 Dashboard Management
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- **Admin Panel**:
+  - Full product CRUD operations
+  - Order management system
+  - User account control
+- **User Dashboard**:
+  - Order tracking & history
+  - Profile customization
+  - Secure password updates
+
+## 🛠️ Technology Stack
+
+**Frontend:**  
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react)
+![Redux Toolkit](https://img.shields.io/badge/Redux%20Toolkit-764ABC?style=for-the-badge&logo=redux)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css)
+![Ant Design](https://img.shields.io/badge/Ant%20Design-0170FE?style=for-the-badge&logo=ant-design)
+![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite)
+
+**Backend:**  
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js)
+![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb)
+
+## 🚀 Quick Setup
+
+1. **Clone repository**
+   ```bash
+   git clone https://github.com/your-username/pedall.git
+   cd pedall
+
+   ```
+2. **Install dependencies**
+   ```bash
+      npm install
+
+   ```
+3. **Start development server**
+   ```
+   npm run dev
+   ```
+
+## 📜 License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+## 🤝 Contributions
+
+Contributions are welcome! Feel free to fork the repository, make your changes, and submit a pull request.
+
+## 📞 Contact
+
+For any queries or support, please contact:
+
+- **Name:** Abu Saleh Md Fahim
+- **Email:** devasfahim@gmail.com
+- **GitHub:** [DevAsFahim](https://github.com/DevAsFahim)
