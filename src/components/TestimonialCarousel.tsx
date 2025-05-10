@@ -198,7 +198,7 @@ const TestimonialCarousel = () => {
                           </blockquote>
 
                           <div className="mt-auto">
-                            <div className="inline-flex items-center px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-sm">
+                            <div className="inline-flex items-center px-4 py-2 bg-primary text-white semibold rounded-full text-sm">
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"

@@ -16,7 +16,8 @@ type ErrorResponse = {
 };
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:5000/api",
+  baseUrl: "https://pedal-power.vercel.app/api",
+  // baseUrl: "http://localhost:5000/api",
   // baseUrl: "https://pedal-power.vercel.app/api",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
@@ -47,11 +48,14 @@ const baseQueryWithRefreshToken: BaseQueryFn<
 
   if (result.error?.status === 401) {
     // "https://pedal-power.vercel.app/api/auth/refresh-token"
-    // send refresh token 
-    const res = await fetch("http://localhost:5000/api/auth/refresh-token", {
-      method: "POST",
-      credentials: "include",
-    });
+    // send refresh token
+    const res = await fetch(
+      "https://pedal-power.vercel.app/api/auth/refresh-token",
+      {
+        method: "POST",
+        credentials: "include",
+      }
+    );
     const data = await res.json();
 
     if (data?.data?.accessToken) {

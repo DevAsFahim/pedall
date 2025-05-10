@@ -77,7 +77,7 @@ const SingleBlog = () => {
   return (
     <div>
       {/* Blog Header */}
-      <div className="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-40">
+    <div className="bg-primary text-white py-40">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="mb-4">
@@ -116,13 +116,13 @@ const SingleBlog = () => {
             <div className="bg-white rounded-xl shadow-lg p-6 md:p-10">
               <BlogDetailContent content={blog.content} />
 
-              <div className="mt-10 pt-6 border-t border-gray-200">
+              {/* <div className="mt-10 pt-6 border-t border-gray-200">
                 <div className="flex flex-wrap gap-2 mb-6">
                   {blog.tags.map((tag, index) => (
                     <a
                       key={index}
                       href="#"
-                      className="px-3 py-1 bg-gray-100 hover:bg-blue-50 rounded-full text-sm font-medium text-gray-700 hover:text-blue-700 transition-colors"
+                      className="px-3 py-1 bg-gray-100 hover:bg-blue-50 rounded-full text-sm font-medium text-gray-700 hover:text-primary transition-colors"
                     >
                       #{tag}
                     </a>
@@ -130,7 +130,7 @@ const SingleBlog = () => {
                 </div>
 
                 <BlogShareLinks />
-              </div>
+              </div> */}
             </div>
 
             {/* Related Posts */}

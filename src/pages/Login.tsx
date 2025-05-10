@@ -79,7 +79,7 @@ const Login = () => {
         
         <PForm  key={JSON.stringify(defaultValues)} onSubmit={onSubmit} defaultValues={defaultValues}>
           <PInput type="email" name="email" label="Email" />
-          <PInput type="text" name="password" label="Password" />
+          <PInput type="password" name="password" label="Password" />
 
           <div className="flex items-center justify-center mb-5 gap-4">
             <p>New on this website? </p>
