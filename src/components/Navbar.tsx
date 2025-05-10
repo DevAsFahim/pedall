@@ -19,14 +19,12 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-[#E7F6F5] py-4">
+    <div className="bg-[#E7F6F5] py-4 fixed w-full z-100">
       <nav className="flex justify-between items-center p-container">
-        {/* Logo */}
         <Link to="/">
           <img src={logo} alt="logo" className="w-[120px]" />
         </Link>
 
-        {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-5 font-noto-sans text-primary-text font-semibold">
           <Link to="/" className="hover:text-primary">
             Home
@@ -36,6 +34,9 @@ const Navbar = () => {
           </Link>
           <Link to="/products" className="hover:text-primary">
             Products
+          </Link>
+          <Link to="/blogs" className="hover:text-primary">
+            Blogs
           </Link>
           {user ? (
             <Link

@@ -9,13 +9,25 @@ import { verifyToken } from "../utils/verifyToken";
 import { toast } from "sonner";
 import logo from "../assets/logo.png";
 import { FieldValues, SubmitHandler } from "react-hook-form";
+import { useState } from "react";
 
 // type TUserData = {
 //   email: string;
 //   password: string;
 // };
 
+const userCredential = {
+  email: "fahim@gmail.com",
+  password: 'user123'
+}
+
+const adminCredential = {
+  email: "fahim@admin.com",
+  password: 'admin123'
+}
+
 const Login = () => {
+  const [defaultValues, setDefaultValues] = useState({})
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [login] = useLoginMutation();
@@ -48,7 +60,24 @@ const Login = () => {
         <div className="flex items-center justify-center gap-5 mb-6">
           <h3 className="text-primary-text font-bold text-3xl">Welcome back</h3>
         </div>
-        <PForm onSubmit={onSubmit}>
+
+        <div className="flex items-center gap-3 mb-4">
+          <p className="text-primary-text">Login as: </p>
+          <button
+            onClick={() => setDefaultValues(userCredential)}
+            className="bg-primary text-base font-semibold px-4 py-1 rounded-full text-white hover:bg-deep-blue transition-all cursor-pointer"
+          >
+            User
+          </button>
+          <button
+            onClick={() => setDefaultValues(adminCredential)}
+            className="bg-primary text-base font-semibold px-4 py-1 rounded-full text-white hover:bg-deep-blue transition-all cursor-pointer"
+          >
+            Admin
+          </button>
+        </div>
+        
+        <PForm  key={JSON.stringify(defaultValues)} onSubmit={onSubmit} defaultValues={defaultValues}>
           <PInput type="email" name="email" label="Email" />
           <PInput type="text" name="password" label="Password" />
 

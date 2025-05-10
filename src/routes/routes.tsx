@@ -18,6 +18,8 @@ import VerifyOrder from "../pages/VerifyOrder";
 import ManageUsers from "../pages/dashboard/admin/ManageUsers";
 import MyOrders from "../pages/dashboard/customer/MyOrders";
 import ChangePassword from "../pages/dashboard/customer/ChangePassword";
+import BlogPage from "../pages/blogs/Blogs";
+import SingleBlog from "../pages/blogs/SingleBlog";
 
 const routes = createBrowserRouter([
   {
@@ -39,6 +41,14 @@ const routes = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+      },
+      {
+        path: "/blogs",
+        element: <BlogPage />,
+      },
+      {
+        path: "/blogs/:slug",
+        element: <SingleBlog />,
       },
       {
         path: "/checkout",
